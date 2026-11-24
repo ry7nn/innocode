@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ZeroLoop — Industry That Gives Back</title>
+<style>
+:root{--bg:#f3f7f1;--card:#fff;--ink:#0e1d15;--mut:#506659;--acc:#0a8f5b;--acc2:#d99700;--red:#d9482b;--line:#d3dfd6;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#06110c;--card:#0d1e16;--ink:#e8f4ec;--mut:#97b0a2;--acc:#2ee59d;--acc2:#ffc933;--red:#ff7a59;--line:#1c3428;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#06110c;--card:#0d1e16;--ink:#e8f4ec;--mut:#97b0a2;--acc:#2ee59d;--acc2:#ffc933;--red:#ff7a59;--line:#1c3428;color-scheme:dark}
+*{box-sizing:border-box}html,body{height:100%;margin:0}
+body{background:var(--bg);color:var(--ink);font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;display:flex;flex-direction:column;overflow:hidden}
+.top{display:flex;align-items:center;justify-content:space-between;padding:10px 18px}
+.top b{font-size:18px}.top b i{color:var(--acc);font-style:normal}.top span{color:var(--mut);font-size:13px}
+.bar{height:4px;background:var(--line)}.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--acc),var(--acc2));transition:width .5s}
+main{flex:1;position:relative;min-height:0}
+.s{position:absolute;inset:0;overflow-y:auto;padding:22px 20px 30px;opacity:0;visibility:hidden;transform:translateX(50px);transition:opacity .5s,transform .5s,visibility .5s}
+.s.on{opacity:1;visibility:visible;transform:none}
+.in{max-width:960px;margin:auto}
+.rv{opacity:0;transform:translateY(22px)}.on .rv{animation:up .6s var(--d,0s) both}
+@keyframes up{to{opacity:1;transform:none}}
+@keyframes pulse{50%{transform:scale(1.06)}}@keyframes sp{to{transform:rotate(360deg)}}@keyframes mv{from{left:0}to{left:100%}}@keyframes mr{from{left:100%}to{left:0}}
+h1{font-size:clamp(34px,7vw,64px);line-height:1.05;margin:12px 0}h1 em,h2 em{font-style:normal;color:var(--acc)}
+h2{font-size:clamp(26px,4.6vw,42px);line-height:1.12;margin:6px 0 8px}
+.k{color:var(--acc);font-weight:700;font-size:13px;letter-spacing:1px;text-transform:uppercase}
+.lead{color:var(--mut);font-size:clamp(16px,2.2vw,19px);max-width:640px;margin:0 0 20px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0}
+.chip{border:1px solid var(--line);background:var(--card);padding:6px 14px;border-radius:99px;font-size:14px;font-weight:600}
+.chip.m{border-color:var(--acc2);color:var(--acc2)}
+.g{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr))}
+.c{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px}
+.c h3{margin:4px 0;font-size:17px}.c p{margin:0;color:var(--mut);font-size:14.5px}
+button{font:inherit;color:inherit;cursor:pointer}
+.btn{background:var(--acc);color:#04130c;border:0;padding:12px 24px;border-radius:12px;font-weight:800;font-size:16px;animation:pulse 2s infinite}
+.btn.o{background:none;color:var(--ink);border:1px solid var(--line);animation:none}
+.hero{display:grid;grid-template-columns:1.2fr .8fr;gap:20px;align-items:center;min-height:70vh}
+.ring{width:100%;max-width:320px;margin:auto;display:block}.r1{transform-origin:160px 160px;animation:sp 22s linear infinite}.r2{transform-origin:160px 160px;animation:sp 14s linear infinite reverse}
+.flow{display:flex;align-items:center;gap:0;margin:18px 0}
+.nd{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 10px;font-weight:700;text-align:center;min-width:84px;font-size:14px}
+.ln{flex:1;height:4px;background:var(--line);position:relative;border-radius:4px;min-width:40px}
+.ln i{position:absolute;top:-4px;width:12px;height:12px;border-radius:50%;background:var(--red);animation:mv 2.2s linear infinite}
+.ln i:nth-child(2){animation-delay:.7s}.ln i:nth-child(3){animation-delay:1.4s}
+.ret{display:none;margin:-6px 42px 0}.loop .ret{display:block}.loop .ln i{background:var(--acc)}.ret .ln i{animation-name:mr;background:var(--acc)}
+.meter{height:16px;background:var(--line);border-radius:99px;overflow:hidden;margin:6px 0}.meter i{display:block;height:100%;width:88%;background:var(--red);transition:width 1s,background .6s}.loop .meter i{width:10%;background:var(--acc)}
+.tg{display:inline-flex;border:1px solid var(--line);border-radius:99px;overflow:hidden;margin:6px 0}.tg button{background:none;border:0;padding:9px 18px;font-weight:700}.tg button.a{background:var(--acc);color:#04130c}
+.tile{text-align:left;position:relative}.tile .big{font-size:30px;font-weight:800;color:var(--acc2)}.tile .d{max-height:0;overflow:hidden;transition:max-height .5s;color:var(--mut);font-size:14.5px}.tile.open .d{max-height:140px;margin-top:6px}.tile.open{border-color:var(--acc)}
+.tile .hint{font-size:12px;color:var(--acc)}.tile.open .hint{display:none}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:12px}
+.steps button{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 6px;font-weight:700;font-size:14px;transition:.3s}.steps button.a{background:var(--acc);color:#04130c;transform:translateY(-4px)}
+.panel{min-height:92px;border-left:5px solid var(--acc);animation:up .4s both}
+.al{list-style:none;margin:10px 0;padding:0;display:grid;gap:6px}
+.al li{display:flex;justify-content:space-between;gap:10px;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:9px 12px;font-size:14px;transition:all .6s;max-height:50px;overflow:hidden}
+.al li b{color:var(--mut)}.foc .al li{opacity:.12;max-height:0;padding-top:0;padding-bottom:0;margin:-3px 0;border-width:0}.foc .al li.t{opacity:1;max-height:50px;padding:9px 12px;margin:0;border:1px solid var(--acc);border-left-width:5px;border-width:1px 1px 1px 5px}.foc .al li.t b{color:var(--acc2)}
+.sim{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+label{display:block;font-size:14px;font-weight:600;margin:12px 0 4px}select,input[type=range]{width:100%}select{padding:10px;border-radius:10px;background:var(--bg);color:var(--ink);border:1px solid var(--line);font-size:15px}input[type=range]{accent-color:var(--acc)}
+.out{display:grid;grid-template-columns:1fr 1fr;gap:10px}.out div{background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:12px}.out b{display:block;font-size:clamp(20px,3.4vw,28px);color:var(--acc)}.out small{color:var(--mut);font-size:12.5px}
+.zero{font-size:clamp(40px,9vw,76px);font-weight:900;color:var(--acc2);line-height:1}
+.sdg{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;margin:8px 0 12px}
+.sdg button{background:var(--card);border:2px solid var(--line);border-radius:14px;padding:10px 4px;font-weight:800;transition:.3s}.sdg button b{display:block;font-size:24px}.sdg button small{display:block;font-size:11px;color:var(--mut);line-height:1.2}.sdg button.a{transform:translateY(-5px) scale(1.05)}.sdg button.v{border-color:var(--acc)}
+.det{border-left:6px solid var(--acc);animation:up .4s both}.det h3{font-size:20px}.lv{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}.lv span{background:var(--bg);border:1px solid var(--line);border-radius:99px;padding:4px 12px;font-size:13px;font-weight:600}
+.tl{position:relative;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:12px;padding-top:22px}
+.tl:before{content:"";position:absolute;top:8px;left:0;height:4px;width:0;background:linear-gradient(90deg,var(--acc),var(--acc2));border-radius:4px}.on .tl:before{animation:fill 2.4s .3s forwards}@keyframes fill{to{width:100%}}
+.tl .c{border-top:4px solid var(--acc2)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 16px}
+.nav button{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 18px;font-weight:700}.nav button.p{background:var(--acc);color:#04130c;border:0}.nav button:disabled{opacity:.35}
+.dots{display:flex;gap:6px}.dots i{width:8px;height:8px;border-radius:50%;background:var(--line);transition:.3s;cursor:pointer}.dots i.a{background:var(--acc);width:22px;border-radius:8px}
+@media (max-width:760px){.hero,.sim{grid-template-columns:1fr}.hero{min-height:0}.sdg{grid-template-columns:repeat(3,1fr)}.steps{grid-template-columns:repeat(2,1fr)}.dots{display:none}}
+input[type=text]{width:100%;padding:11px;border-radius:10px;background:var(--bg);color:var(--ink);border:1px solid var(--line);font-size:16px}.q{display:grid;gap:8px;margin-top:8px}.q button{text-align:left;background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:11px 14px;font-weight:600;transition:.25s}.q button:hover{border-color:var(--acc)}.q button.ok{background:var(--acc);color:#04130c;border-color:var(--acc)}.q button.no{border-color:var(--red);color:var(--red);opacity:.7}.top .pts{color:var(--acc2);font-weight:800}.al li{cursor:pointer}.al li.pk{box-shadow:0 0 0 2px var(--acc2) inset}.fab{position:fixed;right:16px;bottom:calc(76px + env(safe-area-inset-bottom,0px));z-index:9;border-radius:99px;background:var(--acc2);color:#1b1300;border:0;padding:12px 18px;font-weight:800;box-shadow:0 6px 20px #0005}.chat{position:fixed;right:12px;left:12px;bottom:calc(130px + env(safe-area-inset-bottom,0px));max-width:400px;margin-left:auto;z-index:10;background:var(--card);border:1px solid var(--line);border-radius:18px;display:none;flex-direction:column;max-height:60vh;box-shadow:0 10px 40px #0007}.chat.o{display:flex}.msgs{overflow-y:auto;padding:12px;display:flex;flex-direction:column;gap:8px;flex:1}.m{max-width:88%;padding:9px 12px;border-radius:14px;font-size:14.5px;animation:up .3s both}.m.b{background:var(--bg);border:1px solid var(--line)}.m.u{background:var(--acc);color:#04130c;align-self:flex-end}.cf{display:flex;flex-wrap:wrap;gap:6px;padding:0 12px 8px}.cf button{background:none;border:1px solid var(--line);border-radius:99px;padding:4px 10px;font-size:12.5px}.ci{display:flex;gap:6px;padding:10px;border-top:1px solid var(--line)}
+
+.aur{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}.aur i{position:absolute;border-radius:50%;filter:blur(90px);opacity:.2;animation:dr 28s ease-in-out infinite alternate}.aur i:nth-child(1){width:55vw;height:55vw;left:-14vw;top:-18vw;background:var(--acc)}.aur i:nth-child(2){width:44vw;height:44vw;right:-12vw;top:4vw;background:#2a6a4f;animation-duration:34s}.aur i:nth-child(3){width:50vw;height:50vw;left:24vw;bottom:-26vw;background:var(--acc2);opacity:.12;animation-duration:40s}@keyframes dr{to{transform:translate(8vw,8vh) scale(1.18)}}#dust{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.7}.top,.bar,.nav{position:relative;z-index:1}
+h1 em{background:linear-gradient(100deg,var(--acc),var(--acc2),var(--acc));background-size:220% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:sh 7s linear infinite}@keyframes sh{to{background-position:220% 0}}#rot{color:var(--acc);border-bottom:1px solid var(--line);transition:opacity .3s}
+.tick{overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:10px 0;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}.tk{display:flex;width:max-content;animation:mq 30s linear infinite}.tk span{font:12px ui-monospace,monospace;letter-spacing:.15em;text-transform:uppercase;color:var(--mut);padding:0 16px;white-space:nowrap}.tk span:after{content:'·';margin-left:32px;color:var(--acc)}@keyframes mq{to{transform:translateX(-50%)}}
+#map{width:100%;height:auto;display:block;max-height:60vh}#map .flow{fill:none;stroke-width:2.4;stroke-dasharray:7 9;animation:fl 1.1s linear infinite;transition:opacity .45s}@keyframes fl{to{stroke-dashoffset:-32}}.f-heat{stroke:var(--acc2)}.f-material{stroke:var(--acc)}.f-water{stroke:#4aa3ff}#map.lin .flow{opacity:0}#map.cir .out{opacity:0}#map .out{transition:opacity .45s}#map.cir .flow.foff{opacity:.18}#map.cir .flow.fon{stroke-width:3.6}.out line{stroke:var(--red);stroke-width:1.6;stroke-dasharray:4 6}.out text{fill:var(--red);font:9px ui-monospace,monospace;letter-spacing:.12em;text-anchor:middle}.mn{cursor:pointer;transition:opacity .4s}#map.lin .mn{opacity:.78}.mn .body{fill:var(--card);stroke:var(--acc);stroke-width:1.6;transition:.3s}.mn:hover .body{stroke-width:3.5}.mn.lit .body{stroke:var(--acc2);stroke-width:4}.mn text{fill:var(--ink);font:600 11.5px system-ui,sans-serif;text-anchor:middle;pointer-events:none}.mn:focus{outline:none}.mn:focus-visible .body{stroke:var(--ink);stroke-width:4}
+textarea{width:100%;min-height:110px;padding:11px;border-radius:10px;background:var(--bg);color:var(--ink);border:1px solid var(--line);font:inherit;font-size:15px;resize:vertical;margin-bottom:8px}.mres{display:grid;gap:10px;align-content:start}.rs{border-left:4px solid var(--acc);animation:up .5s both}.rs b{color:var(--acc2)}details summary{cursor:pointer}td{padding:6px 8px;border-top:1px solid var(--line);vertical-align:top}code{color:var(--acc)}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}.tl:before{width:100%}}
+</style>
+</head>
+<body>
+<div class='aur'><i></i><i></i><i></i></div><canvas id='dust' aria-hidden='true'></canvas>
+<div class='top'><b>Zero<i>Loop</i></b><span><span class='pts' id='pts'>⭐ 0</span> · <span id='lab'></span></span></div>
+<div class="bar"><i id="pg"></i></div>
+<main>
+
+<section class="s"><div class="in hero">
+<div>
+<div class='k rv'>UAE industrial symbiosis · Sustainability · Focus <span style='opacity:.4'>/</span> <span id='rot'>waste heat</span></div>
+<h1 class="rv" style="--d:.15s">What if a factory never had to <em>throw anything away?</em></h1>
+<p class="lead rv" style="--d:.3s">ZeroLoop is an AI layer that turns one plant’s waste, heat, water and CO₂ into another’s raw material, then shows operators the few actions that matter most.</p>
+<div class="chips rv" style="--d:.45s"><span class="chip m">💰 AED 0 upfront</span><span class="chip m">📈 Paid from verified savings</span><span class="chip">🇦🇪 Aligned with UAE Net Zero 2050</span></div>
+<button class="btn rv" style="--d:.6s" onclick="go(1)">Start the 2-minute tour →</button>
+</div>
+<svg class="ring rv" style="--d:.3s" viewBox="0 0 320 320" role="img" aria-label="Animated loop of resources circulating between industries">
+<circle cx="160" cy="160" r="120" fill="none" stroke="var(--line)" stroke-width="2"/><circle cx="160" cy="160" r="80" fill="none" stroke="var(--line)" stroke-width="2" stroke-dasharray="4 8"/>
+<g class="r1"><circle cx="160" cy="40" r="14" fill="var(--acc)"/><circle cx="280" cy="160" r="14" fill="var(--acc2)"/><circle cx="160" cy="280" r="14" fill="var(--acc)"/><circle cx="40" cy="160" r="14" fill="var(--acc2)"/></g>
+<g class="r2"><circle cx="160" cy="80" r="8" fill="var(--acc2)"/><circle cx="240" cy="160" r="8" fill="var(--acc)"/><circle cx="160" cy="240" r="8" fill="var(--acc2)"/><circle cx="80" cy="160" r="8" fill="var(--acc)"/></g>
+<text x="160" y="160" text-anchor="middle" fill="var(--ink)" font-size="28" font-weight="800">0 waste</text><text x="160" y="184" text-anchor="middle" fill="var(--mut)" font-size="13">one loop</text></svg><div class='tick' style='grid-column:1/-1'><div class='tk' id='tk'></div></div>
+</div></section>
+
+<section class='s'><div class='in'><div class='k rv'>Let’s make it yours</div><h2 class='rv' style='--d:.1s'>Tell us about <em>your plant.</em></h2><p class='lead rv' style='--d:.2s'>Three quick answers and the rest of the tour adapts to you.</p><div class='c rv' style='--d:.3s;max-width:560px'><label for='nm'>Your name</label><input type='text' id='nm' placeholder='e.g. Aisha' maxlength='30'><label for='pi'>Your industry</label><select id='pi'></select><label for='pb'>Yearly energy, water and waste bill: AED <b id='pbv'>10</b> M</label><input id='pb' type='range' min='1' max='100' value='10'><label>Your biggest headache</label><div class='q' id='pp'></div><button class='btn' style='margin-top:16px' onclick='pers()'>Personalize my tour →</button></div></div></section>
+
+<section class="s"><div class="in">
+<div class="k rv">Why is there a problem?</div>
+<h2 class="rv" style="--d:.1s">Industry runs on a <em>straight line.</em></h2>
+<p class="lead rv" style="--d:.2s" id="wl">Take, make, dump. Flip the switch to see what changes when the line becomes a loop.</p>
+<div class="tg rv" style="--d:.3s"><button class="a" id="b1" onclick="lp(0)">Straight line</button><button id="b2" onclick="lp(1)">Closed loop</button></div>
+<div id="fw" class="rv" style="--d:.4s">
+<div class="flow"><div class="nd">⛏️ Take</div><div class="ln"><i></i><i></i><i></i></div><div class="nd">🏭 Make</div><div class="ln"><i></i><i></i><i></i></div><div class="nd" id="end">🗑️ Dump</div></div>
+<div class="ret"><div class="ln"><i></i><i></i><i></i></div></div>
+<div class="c" style="margin-top:14px"><h3 id="mt">Resources lost to waste (illustrative)</h3><div class="meter"><i></i></div><p id="mp">Every unit that reaches the dump is a unit paid for twice: once to make it, once to get rid of it.</p></div>
+</div></div></section>
+
+<section class="s"><div class="in">
+<div class="k rv">What is the problem?</div>
+<h2 class="rv" style="--d:.1s">Five problems, <em>one root cause.</em></h2>
+<p class="lead rv" style="--d:.2s">Tap each card. Fixing one alone just moves it somewhere else. <b id="tc" style="color:var(--acc2)">0/5</b> discovered. Figures are approximate global estimates.</p>
+<div class='c rv' style='--d:.3s;margin-bottom:12px'><h3>🎯 Guess first: what share of global CO₂ comes from industry?</h3><div class='q'><button onclick='qz(this,0)'>About 5%</button><button data-c='1' onclick='qz(this,1)'>Roughly 25–30%</button><button onclick='qz(this,0)'>Over 60%</button></div><p id='qf' style='margin:8px 0 0;font-size:14px;color:var(--mut)'></p></div>
+<div class="g rv" style="--d:.3s" id="tl"></div>
+<p id="tdone" class="lead" style="margin-top:14px;color:var(--acc)"></p>
+</div></section>
+
+<section class="s"><div class="in">
+<div class="k rv">The solution</div>
+<h2 class="rv" style="--d:.1s">One platform. Four moves. <em>Zero leaks.</em></h2>
+<p class="lead rv" style="--d:.2s">ZeroLoop links factories, ports and utilities in one industrial park into a shared resource network. Tap a step, or watch it cycle.</p>
+<div class="steps rv" style="--d:.3s" id="st"></div>
+<div class="c panel rv" style="--d:.4s" id="sp"></div>
+<div class="chips rv" style="--d:.5s"><span class="chip">♻️ Materials marketplace</span><span class="chip">💧 Water loop</span><span class="chip">🌍 Carbon-to-value</span><span class="chip m">💰 Low-cost sensors, start with one line</span></div>
+</div></section>
+
+<section class='s'><div class='in'><div class='k rv'>The network</div><h2 class='rv' style='--d:.1s'>Seven plants. One estate. <em>Seven loops.</em></h2><p class='lead rv' style='--d:.2s'>Flip to <b>Today</b> and every plant pays to throw something away. Flip to <b>With ZeroLoop</b> and the same streams become supply contracts. Tap a plant. <b id='mx' style='color:var(--acc2)'>0/7</b> explored.</p>
+<div class='tg rv' style='--d:.3s'><button class='a' id='m1' onclick='mm(0)'>Today</button><button id='m2' onclick='mm(1)'>With ZeroLoop</button></div>
+<div class='c rv' style='--d:.4s;padding:8px'><svg id='map' class='lin' viewBox='0 0 600 520' role='img' aria-label='Network of seven industrial plants sharing heat, materials and water'></svg></div>
+<div class='c rv' style='--d:.5s;margin-top:10px'><div class='k' id='mi_t'>Select a plant</div><p id='mi_h' style='margin:4px 0'>Tap any plant to see the streams it has available.</p><p style='margin:0;color:var(--mut);font-size:14px'>Looking for: <span id='mi_n'>—</span></p></div>
+<div class='chips rv' style='--d:.6s'><span class='chip' style='border-color:var(--acc2)'>🟡 Heat</span><span class='chip'>🟢 Materials</span><span class='chip'>🔵 Water</span><span class='chip m'>💰 Each loop turns a cost into income</span></div>
+</div></section>
+
+<section class='s'><div class='in'><div class='k rv'>The matcher</div><h2 class='rv' style='--d:.1s'>Describe your plant. <em>Meet your neighbours.</em></h2><p class='lead rv' style='--d:.2s'>Type what you throw away and what you buy, or tap an example. The matcher proposes the three loops worth chasing first and lights them up on the network.</p>
+<div class='sim rv' style='--d:.3s'><div class='c'><label for='biz'>Your business and its waste</label><textarea id='biz' placeholder='e.g. A bakery in Al Quoz with two rack ovens, exhaust at 180 °C, and 60 kg of stale bread a day.'></textarea><div class='chips'><button class='chip' onclick='ex(0)'>🥖 Bakery</button><button class='chip' onclick='ex(1)'>🖥️ Data centre</button><button class='chip' onclick='ex(2)'>🧵 Dyehouse</button></div><button class='btn' style='animation:none;margin-top:6px' onclick='fm()'>Find my loops</button></div><div id='mres' class='mres'><div class='c'><p>Nothing yet. Describe a plant, or tap an example.</p></div></div></div>
+</div></section>
+
+<section class="s"><div class="in">
+<div class="k rv">The Focus Engine</div>
+<h2 class="rv" style="--d:.1s">10 alerts. Only <em>3 matter.</em></h2>
+<p class="lead rv" style="--d:.2s">Sustainability fails when attention is scattered. Tap the three alerts you’d fix first, then let the engine compare.</p>
+<div class="c rv" style="--d:.3s" id="fe">
+<button class="btn" id="fb" onclick="fc()">Activate Focus Engine</button>
+<ul class="al" id="al"></ul>
+<p id="fn" style="margin:0;color:var(--mut);font-size:14px">Scores show estimated impact (0–100). Tap the three you’d act on first.</p>
+</div></div></section>
+
+<section class="s"><div class="in">
+<div class="k rv">The impact</div>
+<h2 class="rv" style="--d:.1s">Scale it up and <em>watch the numbers move.</em></h2>
+<p class="lead rv" style="--d:.2s">An illustrative model using simple per-site averages, not a forecast.</p>
+<div class="c sim rv" style="--d:.3s"><div>
+<label for="si">Industry</label><select id="si"></select>
+<label for="sn">Facilities in the network: <b id="vn">10</b></label><input id="sn" type="range" min="1" max="100" value="10">
+<label for="sa">Loop coverage: <b id="va">60</b>%</label><input id="sa" type="range" min="10" max="100" value="60"></div>
+<div class="out"><div><b id="o1">0</b><small>t CO₂ avoided / year</small></div><div><b id="o2">0</b><small>m³ water reused / year</small></div><div><b id="o3">0</b><small>t waste diverted / year</small></div><div><b id="o4">0</b><small>MWh recovered / year</small></div></div></div>
+<div class='c sim rv' style='--d:.5s;margin-top:12px'><div><h3>🔧 Your plant, in two sliders</h3><label for='xh'>Waste heat available: <b id='xhv'>1,000</b> MWh/yr</label><input id='xh' type='range' min='0' max='5000' step='50' value='1000'><label for='xd'>Yearly disposal cost: AED <b id='xdv'>100,000</b></label><input id='xd' type='range' min='0' max='500000' step='5000' value='100000'></div><div class='out'><div><b id='x1'>0</b><small>AED saved / year</small></div><div><b id='x2'>0</b><small>t CO₂ avoided / year</small></div><div><b id='x3'>0</b><small>AED / month</small></div><div><b id='x4'>0</b><small>% of value from energy (rest: disposal)</small></div></div></div>
+</div></section>
+
+<section class="s"><div class="in">
+<div class="k rv">Affordability</div>
+<h2 class="rv" style="--d:.1s">Upfront cost: <span class="zero">AED 0</span></h2>
+<p class="lead rv" style="--d:.2s">Pay-as-you-save: ZeroLoop earns a share only of savings it verifies. Move the sliders to see what a plant keeps. Illustrative model.</p>
+<div class="c sim rv" style="--d:.3s"><div>
+<label for="ab">Yearly energy, water and waste bill: AED <b id="vb">10</b> M</label><input id="ab" type="range" min="1" max="100" value="10">
+<label for="ae">Efficiency gain: <b id="ve">15</b>%</label><input id="ae" type="range" min="8" max="25" value="15">
+<p style="color:var(--mut);font-size:13px">Assumes ZeroLoop keeps 30% of verified savings.</p></div>
+<div class="out"><div><b id="p1">0</b><small>AED M saved / year</small></div><div><b id="p2">0</b><small>AED M you keep / year</small></div><div><b id="p3">0</b><small>AED M you keep over 3 years</small></div><div><b>0</b><small>AED upfront</small></div></div></div>
+<div class="g" style="margin-top:12px">
+<div class="c rv" style="--d:.5s"><h3>🧾 Pay from savings</h3><p>No big capital outlay. If nothing is saved, nothing is owed.</p></div>
+<div class="c rv" style="--d:.6s"><h3>♻️ Waste turns into income</h3><p>By-products sold on the marketplace offset costs.</p></div>
+<div class="c rv" style="--d:.7s"><h3>🌱 Open to green finance</h3><p>Verified tonnes support green loans and carbon credits.</p></div>
+<div class="c rv" style="--d:.8s"><h3>🏪 Built for SMEs too</h3><p>Start with one line or one site and grow from there.</p></div>
+<details class='c' style='grid-column:1/-1'><summary><b>Every number on this page, in one place</b></summary><p style='margin:8px 0'>Illustrative and deliberately conservative. Replace with metered figures from one real site before relying on them.</p><table style='width:100%;font-size:13.5px;border-collapse:collapse'><tr><td><code>ENERGY_PRICE</code></td><td>250 AED / MWh</td><td>Marginal cost of the heat avoided, not the retail tariff.</td></tr><tr><td><code>RECOVERY</code></td><td>60%</td><td>Share of a waste stream a well-designed loop actually reuses.</td></tr><tr><td><code>CO2_PER_MWH</code></td><td>0.4 t</td><td>Emission factor per avoided MWh. Swap in the local factor.</td></tr><tr><td><code>DIVERSION</code></td><td>50%</td><td>Share of disposal cost that disappears once a stream has a buyer.</td></tr><tr><td><code>FEE</code></td><td>30%</td><td>ZeroLoop’s share of verified savings. Nothing saved, nothing owed.</td></tr><tr><td><code>GAIN</code></td><td>8–25%</td><td>Efficiency-gain range used by the affordability sliders.</td></tr></table></details>
+</div></div></section>
+
+<section class="s"><div class="in">
+<div class="k rv">UAE &amp; the Sustainable Development Goals</div>
+<h2 class="rv" style="--d:.1s">Built for the UAE’s <em>national ambitions.</em></h2>
+<p class="lead rv" style="--d:.2s">Tap each goal to see the UAE strategy it connects to and how ZeroLoop delivers. <b id="sc" style="color:var(--acc2)">0/6</b> explored.</p>
+<div class="sdg rv" style="--d:.3s" id="sg"></div>
+<div class="c det rv" style="--d:.4s" id="sd"></div>
+<div class="c rv" style="--d:.5s;margin-top:12px;border-left:6px solid var(--acc2)"><h3>🎯 Where “focus” fits</h3><p>A focused target (the top three actions), focused people (less alert noise) and a focused nation (one shared loop instead of many disconnected efforts).</p></div>
+</div></section>
+
+<section class="s"><div class="in">
+<div class="k rv">Roadmap</div>
+<h2 class="rv" style="--d:.1s">From one park to a <em>national loop.</em></h2>
+<p class="lead rv" style="--d:.2s">Starting small keeps the risk, and the cost, low.</p>
+<div class="tl">
+<div class="c rv" style="--d:.6s"><h3>1 · Pilot</h3><p>One industrial zone, one digital twin, three proven waste-to-resource matches. Free pilot, paid from savings.</p></div>
+<div class="c rv" style="--d:1.2s"><h3>2 · Network</h3><p>Link neighbouring plants, open the materials marketplace, add solar and storage scheduling.</p></div>
+<div class="c rv" style="--d:1.8s"><h3>3 · Scale</h3><p>Connect ports, utilities and free zones, with verified carbon reporting across emirates.</p></div>
+<div class="c rv" style="--d:2.4s"><h3>4 · Export</h3><p>Share the open playbook with other arid, fast-growing industrial regions.</p></div>
+</div></div></section>
+
+<section class="s"><div class="in" style="text-align:center;padding-top:6vh">
+<div class="k rv">Join the loop</div>
+<h1 class="rv" style="--d:.1s">Cleaner. Cheaper. <em>Focused.</em></h1>
+<div class="chips rv" style="--d:.3s;justify-content:center"><span class="chip">🏭 Fewer emissions</span><span class="chip">♻️ Less waste</span><span class="chip">💧 Less water use</span><span class="chip">🎯 Clear priorities</span><span class="chip m">💰 AED 0 upfront</span><span class="chip">🇦🇪 6 UAE-linked SDGs</span></div>
+<div class='c rv' id='rc' style='--d:.4s;max-width:560px;margin:14px auto;text-align:left'></div><p class="lead rv" style="--d:.5s;margin:14px auto">Concept created for the InnoCode vibecode competition. Impact and cost figures are illustrative.</p>
+<button class="btn rv" style="--d:.7s" onclick="go(0)">↺ Replay the tour</button>
+</div></section>
+
+</main>
+<button class='fab' onclick='ch()'>💬 Ask ZeroLoop</button><div class='chat' id='ct'><div class='msgs' id='ms'></div><div class='cf' id='cf'></div><div class='ci'><input type='text' id='ci' placeholder='Ask anything…' onkeydown='if(event.key==="Enter")ask()'><button class='btn' style='animation:none;padding:8px 16px' onclick='ask()'>Send</button></div></div>
+<div class="nav"><button id="pv" onclick="go(i-1)">← Back</button><div class="dots" id="ds"></div><button class="p" id="nx" onclick="go(i+1)">Next →</button></div>
+
+<script>
+const $=id=>document.getElementById(id),S=[...document.querySelectorAll('.s')],L=["Welcome","About you","Why","The problem","Solution","Network","Matcher","Focus Engine","Impact","Affordability","UAE & SDGs","Roadmap","Join"];
+let i=-1,tm=null;let ST={p:0,n:'',ind:'General manufacturing',b:10,pain:-1};function pt(n){ST.p+=n;$('pts').textContent='⭐ '+ST.p}
+$("ds").innerHTML=S.map((_,n)=>`<i onclick="go(${n})"></i>`).join("");
+function tw(el,to,d){const f=+el.dataset.v||0;el.dataset.v=to;const t0=performance.now();(function s(t){const p=Math.min(1,(t-t0)/700);el.textContent=(f+(to-f)*p).toLocaleString("en-US",{minimumFractionDigits:d,maximumFractionDigits:d});if(p<1)requestAnimationFrame(s)})(t0)}
+function go(n){n=Math.max(0,Math.min(S.length-1,n));if(n===i)return;clearInterval(tm);if(S[i])S[i].classList.remove("on");i=n;const s=S[i];s.scrollTop=0;s.classList.remove("on");void s.offsetWidth;s.classList.add("on");
+$("pg").style.width=((i+1)/S.length*100)+"%";$("lab").textContent=(i+1)+" / "+S.length+" · "+L[i];$("pv").disabled=i==0;$("nx").style.visibility=i==S.length-1?"hidden":"visible";
+[...$("ds").children].forEach((d,k)=>d.className=k==i?"a":"");
+if(i==2)lp(0);if(i==4){stp(0);tm=setInterval(()=>stp((cs+1)%4),3200)}if(i==8){sim();cc()}if(i==9)aff();if(i==12)rc()}
+document.onkeydown=e=>{if(/INPUT|SELECT|TEXTAREA/.test(e.target.tagName))return;if(e.key=="ArrowRight")go(i+1);if(e.key=="ArrowLeft")go(i-1)};
+let x0=0;document.addEventListener("touchstart",e=>x0=e.touches[0].clientX,{passive:true});document.addEventListener("touchend",e=>{if(e.target.closest(".chat,input,select"))return;const d=e.changedTouches[0].clientX-x0;if(Math.abs(d)>70)go(i+(d<0?1:-1))},{passive:true});
+function lp(v){$("fw").classList.toggle("loop",!!v);$("b1").className=v?"":"a";$("b2").className=v?"a":"";$("end").textContent=v?"♻️ Reuse":"🗑️ Dump";
+$("mt").textContent=v?"Material kept in use (illustrative)":"Resources lost to waste (illustrative)";
+$("mp").textContent=v?"By-products flow back in as inputs. Less to buy, less to dispose of, and far lower emissions.":"Every unit that reaches the dump is a unit paid for twice: once to make it, once to get rid of it."}
+const P=[["🏭","Emissions","~25–30%","of global CO₂ comes from industry. Steel, cement and chemicals are the hardest to clean up."],["🗑️","Waste","~2 bn t","of municipal waste a year worldwide, plus industrial waste. Much of it is reusable material."],["💧","Water","~20%","of freshwater withdrawals go to industry, often in regions already short of water."],["🔥","Lost heat","20–50%","of industrial energy input is estimated to leave as waste heat nobody captures."],["🧠","Alert overload","Noise","Too many dashboards and alarms bury operators, so data never becomes action."]];
+let po=0;$("tl").innerHTML=P.map((p,n)=>`<button class="c tile" onclick="tp(this)"><div>${p[0]} <b>${p[1]}</b></div><div class="big">${p[2]}</div><div class="hint">Tap to reveal</div><div class="d">${p[3]}</div></button>`).join("");
+function tp(b){if(!b.classList.contains("open")){b.classList.add("open");po++;pt(5);$("tc").textContent=po+"/5";if(po==5)$("tdone").textContent="All five feed each other, so the fix has to be one connected loop. Next: the solution →"}}
+const T=[["📡","Sense","Low-cost IoT sensors map energy, water, heat, gas and material flows into a live digital twin of each site."],["🔁","Match","AI pairs one plant’s by-products with another’s demand: slag to cement, waste heat to desalination, CO₂ to concrete curing."],["☀️","Power","Solar, storage and green hydrogen are scheduled against real load, so clean energy runs the hardest processes."],["🛰️","Prove","Every tonne saved is logged to a tamper-evident ledger, making reports and carbon credits audit-ready."]];let cs=0;
+$("st").innerHTML=T.map((t,n)=>`<button onclick="clearInterval(tm);stp(${n})">${t[0]}<br>${n+1} · ${t[1]}</button>`).join("");
+function stp(n){cs=n;[...$("st").children].forEach((b,k)=>b.className=k==n?"a":"");const p=$("sp");p.style.animation="none";void p.offsetWidth;p.style.animation="";p.innerHTML=`<h3>${T[n][0]} ${T[n][1]}</h3><p>${T[n][2]}</p>`}
+const A=[["Furnace 3 is wasting recoverable heat",94,1],["Water leak on line B",88,1],["Compressors idling overnight",81,1],["Pump vibration slightly above normal",15],["Filter replacement due next month",21],["Fan speed 2% high in bay 2",12],["Lights left on in bay 4",9],["Bin 7 is half full",6],["Label printer paper low",3],["Door sensor ping",2]];
+$("al").innerHTML=A.map(a=>`<li onclick="pick(this)" class="${a[2]?"t":""}"><span>${a[0]}</span><b>${a[1]}</b></li>`).join("");
+function fc(){const f=$("fe").classList.toggle("foc");$("fb").textContent=f?"Show all alerts again":"Activate Focus Engine";fx(f)}
+const D={"Steel & metals":[12000,90000,4000,18000],"Cement & concrete":[15000,40000,2500,12000],"Chemicals":[9000,120000,3000,15000],"Food & beverage":[2500,60000,1800,4000],"General manufacturing":[3500,30000,2200,6000]};
+$("si").innerHTML=Object.keys(D).map(n=>`<option>${n}</option>`).join("");
+function sim(){const n=+$("sn").value,a=+$("sa").value/100;$("vn").textContent=n;$("va").textContent=Math.round(a*100);D[$("si").value].forEach((v,k)=>tw($("o"+(k+1)),Math.round(v*n*a),0))}
+function aff(){const b=+$("ab").value,e=+$("ae").value/100,s=b*e;$("vb").textContent=b;$("ve").textContent=Math.round(e*100);tw($("p1"),s,1);tw($("p2"),s*.7,1);tw($("p3"),s*.7*3,1)}
+["si","sn","sa"].forEach(k=>$(k).oninput=sim);["ab","ae"].forEach(k=>$(k).oninput=aff);
+const G=[[7,"#fcc30b","Clean Energy","Affordable & Clean Energy","UAE Energy Strategy 2050","The UAE aims to raise the share of clean energy in its mix. ZeroLoop schedules solar and hydrogen against real factory load and recovers waste heat.",["Solar + storage scheduling","Waste-heat recovery","Green hydrogen swap"]],
+[9,"#fd6925","Industry","Industry, Innovation & Infrastructure","Operation 300bn","The national push to grow advanced industry. AI and digital twins make plants more efficient, cleaner and more competitive.",["Digital twin per site","AI resource matching","Shared park infrastructure"]],
+[12,"#bf8b2e","Responsible","Responsible Consumption & Production","National Circular Economy Policy","A circular economy keeps materials in use. The marketplace turns by-products into inputs with a buyer and a price.",["Materials marketplace","Waste-to-resource matches","Lower raw-material cost"]],
+[13,"#3f7e44","Climate","Climate Action","UAE Net Zero 2050 Initiative","The first country in the region to commit to net zero by 2050. Tonne-by-tonne verified tracking makes reporting audit-ready.",["Verified emissions ledger","Carbon-to-value","Net-zero reporting"]],
+[6,"#26bde2","Water","Clean Water & Sanitation","Water Security Strategy 2036","Reusing and cascading water, and mining brine, lowers demand on energy-hungry desalination in a water-scarce country.",["Water cascades","Brine mineral recovery","Leak detection"]],
+[17,"#19486a","Partnership","Partnerships for the Goals","We the UAE 2031","Shared loops need government, industry and universities working together, which the platform is built to support.",["Shared industrial parks","Open playbook","Public-private pilots"]]];
+let sv=new Set();$("sg").innerHTML=G.map((g,n)=>`<button onclick="sg(${n})" style="--c:${g[1]}"><b style="color:${g[1]}">${g[0]}</b><small>${g[2]}</small></button>`).join("");
+function sg(n){const g=G[n];if(!sv.has(n))pt(5);sv.add(n);$("sc").textContent=sv.size+"/6";[...$("sg").children].forEach((b,k)=>{b.classList.toggle("a",k==n);if(sv.has(k))b.classList.add("v");b.style.borderColor=k==n?G[k][1]:""});
+const d=$("sd");d.style.borderLeftColor=g[1];d.style.animation="none";void d.offsetWidth;d.style.animation="";
+d.innerHTML=`<div class="k" style="color:${g[1]}">SDG ${g[0]} · ${g[3]}</div><h3>${g[4]}</h3><p>${g[5]}</p><div class="lv">${g[6].map(l=>`<span>✔ ${l}</span>`).join("")}</div>`}
+sg(3);sv.clear();$('sc').textContent='0/6';ST.p=0;pt(0);
+$('pi').innerHTML=Object.keys(D).map(n=>`<option>${n}</option>`).join('');$('pi').value=ST.ind;
+const PN=[`💸 Rising bills`,`🗑️ Waste disposal`,`📉 Emission targets`,`🧠 Too much data to act on`],MV=[`map your biggest energy loads and schedule them on solar.`,`list your top by-product on the materials marketplace and find a buyer.`,`switch on the verified emissions ledger and track progress to net zero.`,`switch on the Focus Engine so your team sees only the top three actions.`];
+$('pp').innerHTML=PN.map((p,n)=>`<button onclick='pn(${n})'>${p}</button>`).join('');
+function pn(n){ST.pain=n;[...$('pp').children].forEach((b,k)=>b.className=k==n?'ok':'')}
+$('pb').oninput=()=>$('pbv').textContent=$('pb').value;
+function pers(){ST.n=$('nm').value.trim()||'Friend';ST.ind=$('pi').value;ST.b=+$('pb').value;if(!ST.d){ST.d=1;pt(10)}$('si').value=ST.ind;$('ab').value=ST.b;$('wl').textContent=`${ST.n}, here’s why ${ST.ind.toLowerCase()} is stuck on a straight line. Flip the switch to see what changes when it becomes a loop.`;go(2)}
+function qz(b,ok){const q=b.parentNode;if(q.dataset.d)return;q.dataset.d=1;b.classList.add(ok?'ok':'no');if(!ok)q.querySelector('[data-c]').classList.add('ok');else pt(15);$('qf').textContent=ok?`Right! +15 ⭐ Industry accounts for roughly a quarter to a third of global CO₂.`:`Not quite. It’s roughly 25–30% (a rough global estimate). Tap the cards below to see why it matters.`}
+let pk=0,fd=0;
+function pick(l){if($('fe').classList.contains('foc'))return;if(l.classList.contains('pk')){l.classList.remove('pk');pk--}else if(pk<3){l.classList.add('pk');pk++}$('fn').textContent=pk+`/3 picked. `+(pk==3?`Now activate the engine to compare.`:`Choose the three you’d act on first.`)}
+function fx(f){const n=$('fn');if(!f){n.textContent=`Tap the three you’d act on first.`;return}const m=[...$('al').children].filter(l=>l.classList.contains('pk')&&l.classList.contains('t')).length;if(pk&&!fd){fd=1;pt(m*10)}n.textContent=pk?`You matched ${m} of the engine’s top 3. The rest is hidden so these get done.`:`7 distractions removed. These three actions hold most of the impact.`}
+function rc(){const s=ST.b*.15*.7,lv=ST.p<30?'Loop Starter':ST.p<70?'Loop Builder':'Loop Champion',mv=MV[ST.pain<0?3:ST.pain];$('rc').innerHTML=`<h3>${ST.n?ST.n+'’s':'Your'} Loop Plan</h3><p>🏭 ${ST.ind} · AED ${ST.b} M yearly bill<br>💰 About AED ${s.toFixed(1)} M kept per year at 15% savings, AED 0 upfront (illustrative)<br>🎯 First move: ${mv}<br>⭐ ${ST.p} points · <b style='color:var(--acc2)'>${lv}</b></p>`}
+const FQ=[[`cost|price|afford|expens|pay|cheap|money|much|aed`,`ZeroLoop costs AED 0 upfront. It earns a share (modelled at 30%) only of savings it verifies, so if nothing is saved, nothing is owed. Try the calculator on the Affordability slide.`],[`sdg|goal|uae|net zero|strateg|vision`,`ZeroLoop maps to SDGs 6, 7, 9, 12, 13 and 17, linked to UAE Net Zero 2050, Energy Strategy 2050, Operation 300bn, the National Circular Economy Policy, Water Security Strategy 2036 and We the UAE 2031.`],[`focus|alert|attention|noise`,`The Focus Engine ranks every possible action by estimated impact and shows only the top three, so people act instead of scrolling through alerts.`],[`waste|circular|marketplace|reuse|recycl`,`Waste is listed on a materials marketplace with a buyer, price and route, so a by-product becomes revenue: slag to cement, waste heat to desalination, CO₂ to concrete curing.`],[`water|brine|desal`,`Treated process water cascades to lower-grade uses and brine can be mined for minerals, cutting demand on energy-hungry desalination.`],[`carbon|co2|emission|climate`,`Captured CO₂ is routed to users such as concrete curing, and every tonne avoided is logged on a verified ledger for net-zero reporting.`],[`small|sme|start|pilot|begin`,`You can start with one line or one site. The pilot is free and paid from savings; later phases link plants, ports and free zones.`],[`data|privacy|secur|safe`,`In the concept design, the owner keeps control of plant data. Only the flows needed for matching are shared, and the ledger records tonnes saved.`],[`who|team|made|competition|innocode`,`ZeroLoop is a concept created for the InnoCode vibecode competition.`],[`hi|hello|hey|how|work|sensor|twin`,`Sensors feed a live digital twin of your site. AI then matches your by-products with nearby demand, schedules clean power, and logs every verified tonne saved.`]];
+let co=0,asked=0;
+function say(t,u){const m=document.createElement('div');m.className='m '+(u?'u':'b');m.textContent=t;$('ms').appendChild(m);$('ms').scrollTop=1e9}
+function ch(){const c=$('ct');c.classList.toggle('o');if(c.classList.contains('o')&&!co){co=1;say(`Hi${ST.n?' '+ST.n:''}! I’m the ZeroLoop guide. Ask me anything about the idea, or tap a question.`);$('cf').innerHTML=[`How much does it cost?`,`How does it work?`,`Which UAE goals does it support?`,`What is the Focus Engine?`,`Can a small factory start?`].map(q=>`<button onclick='ask(this.textContent)'>${q}</button>`).join('')}}
+function ask(q){q=(q||$('ci').value).trim();if(!q)return;$('ci').value='';say(q,1);if(!asked++)pt(10);const l=q.toLowerCase(),f=FQ.find(x=>new RegExp(x[0]).test(l));setTimeout(()=>say(f?f[1]:`Good question. I can talk about cost, how it works, the UAE goals, the Focus Engine, waste, water, carbon, getting started and data. Tap a chip or rephrase.`),450)}
+(function(){const rm=matchMedia('(prefers-reduced-motion:reduce)').matches,c=$('dust'),x=c.getContext('2d');let w,h,ps=[],mx=-999,my=-999;
+function rs(){w=c.width=innerWidth;h=c.height=innerHeight;ps=Array.from({length:Math.min(60,w*h/24000|0)},()=>({x:Math.random()*w,y:Math.random()*h,vx:(Math.random()-.5)*.2,vy:-.08-Math.random()*.2,r:.7+Math.random()*1.7,w:Math.random()>.78}))}
+function dr(){x.clearRect(0,0,w,h);ps.forEach(p=>{if(!rm){p.x+=p.vx;p.y+=p.vy;if(p.y<-9){p.y=h+9;p.x=Math.random()*w}const dx=p.x-mx,dy=p.y-my,d=dx*dx+dy*dy;if(d<20000&&d>.1){p.x+=dx*12/d;p.y+=dy*12/d}}x.fillStyle=p.w?'rgba(255,192,97,.5)':'rgba(46,200,140,.5)';x.beginPath();x.arc(p.x,p.y,p.r,0,6.3);x.fill()});if(!rm)requestAnimationFrame(dr)}
+addEventListener('resize',rs);addEventListener('pointermove',e=>{mx=e.clientX;my=e.clientY},{passive:true});rs();dr();
+const W=['waste heat','stale bread','rinse water','CO₂ plumes','offcuts','fly ash','server-room air'],r=$('rot');let k=0;setInterval(()=>{r.style.opacity=0;setTimeout(()=>{k=(k+1)%W.length;r.textContent=W[k];r.style.opacity=1},300)},2800);
+const T=['waste heat → wash water','stale bread → kiln fuel','rinse water → dye bath','fly ash → cement blend','CO₂ → greenhouse','server heat → district loop','sludge → kiln input'].map(t=>`<span>${t}</span>`).join('');$('tk').innerHTML=T+T})();
+const EP=250,RC=.6,CO=.4,DV=.5;
+function cc(){const h=+$('xh').value,d=+$('xd').value,e=h*RC*EP,s=d*DV,t=e+s;$('xhv').textContent=h.toLocaleString('en-US');$('xdv').textContent=d.toLocaleString('en-US');tw($('x1'),t,0);tw($('x2'),h*RC*CO,0);tw($('x3'),t/12,0);tw($('x4'),t?e/t*100:0,0)}
+['xh','xd'].forEach(k=>$(k).oninput=cc);
+const MN=[['bakery','Bakery','Oven exhaust 180 °C · stale bread, flour dust','Wash water, hot water'],['dc','Data centre','Return water 35 °C, always available','Cooling, cheap power'],['plastics','Plastics','Trim offcuts · mould cooling water','Process heat'],['cement','Cement plant','Kiln waste heat 300 °C · fly ash','Alternative fuel'],['dye','Dyehouse','Dye-bath water 80 °C · textile sludge','Process heat, soft water'],['laundry','Laundry','Rinse water 45 °C · steam condensate','Hot water, steam'],['gh','Greenhouse','Biomass residue · spare cooling','Heat, CO₂']],
+ML=[['bakery','laundry','heat'],['dc','gh','heat'],['cement','dye','heat'],['plastics','cement','material'],['laundry','dye','water'],['dye','cement','material'],['bakery','gh','material']],MC={x:300,y:262,r:150},MP={},mset=new Set();
+(function(){let h=`<defs><marker id='ar' viewBox='0 0 10 10' refX='8' refY='5' markerWidth='5' markerHeight='5' orient='auto'><path d='M0 0L10 5 0 10z' fill='#ff7b6b'/></marker></defs><circle cx='300' cy='262' r='150' fill='none' stroke='var(--line)' stroke-dasharray='2 8'/>`;
+MN.forEach((m,k)=>{const a=(-90+k*360/7)*Math.PI/180;MP[m[0]]={x:MC.x+MC.r*Math.cos(a),y:MC.y+MC.r*Math.sin(a),a}});
+MN.forEach(m=>{const p=MP[m[0]],ux=Math.cos(p.a),uy=Math.sin(p.a);h+=`<g class='out'><line x1='${p.x+ux*48}' y1='${p.y+uy*48}' x2='${p.x+ux*82}' y2='${p.y+uy*82}' marker-end='url(#ar)'/><text x='${p.x+ux*98}' y='${p.y+uy*98+3}'>DUMP</text></g>`});
+ML.forEach(l=>{const p=MP[l[0]],q=MP[l[1]],dx=q.x-p.x,dy=q.y-p.y,d=Math.hypot(dx,dy),sx=p.x+dx/d*46,sy=p.y+dy/d*46,ex=q.x-dx/d*52,ey=q.y-dy/d*52,cx=(sx+ex)/2+(MC.x-(sx+ex)/2)*.42,cy=(sy+ey)/2+(MC.y-(sy+ey)/2)*.42;h+=`<path class='flow f-${l[2]}' d='M${sx} ${sy}Q${cx} ${cy} ${ex} ${ey}' data-a='${l[0]}' data-b='${l[1]}'/>`});
+MN.forEach((m,k)=>{const p=MP[m[0]];h+=`<g class='mn' data-i='${k}' tabindex='0' role='button' aria-label='${m[1]}'><circle class='body' cx='${p.x}' cy='${p.y}' r='44'/><text x='${p.x}' y='${p.y+4}'>${m[1]}</text></g>`});
+$('map').innerHTML=h;$('map').querySelectorAll('.mn').forEach(g=>{g.onclick=()=>msel(+g.dataset.i);g.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();msel(+g.dataset.i)}}})})();
+function mm(v){$('map').setAttribute('class',v?'cir':'lin');$('m1').className=v?'':'a';$('m2').className=v?'a':'';if(v&&!ST.mm){ST.mm=1;pt(10)}}
+function msel(k){const m=MN[k];$('mi_t').textContent=m[1];$('mi_h').textContent='Has: '+m[2];$('mi_n').textContent=m[3];if(!mset.has(k)){mset.add(k);pt(3);$('mx').textContent=mset.size+'/7'}
+$('map').querySelectorAll('.mn').forEach((e,j)=>e.classList.toggle('lit',j==k));$('map').querySelectorAll('.flow').forEach(f=>{const t=f.dataset.a==m[0]||f.dataset.b==m[0];f.classList.toggle('fon',t);f.classList.toggle('foff',!t)})}
+function hot(ids){$('map').querySelectorAll('.mn').forEach((g,j)=>g.classList.toggle('lit',ids.includes(MN[j][0])))}
+const LB=[[`bak|bread|pastr|cake|flour|food|kitchen|restaur|cater`,`A bakery is a heat and biomass generator with a shop attached. Its exhaust alone can pay for the wash water.`,[['laundry','Commercial laundry','Oven exhaust at 180 °C → pre-heated wash water','AED 190,000/yr in gas · 240 t CO₂'],['gh','Greenhouse','Fermentation CO₂ + low-grade heat → glasshouse','AED 120,000/yr'],['cement','Cement plant','Stale bread and flour dust → kiln fuel','AED 60,000/yr disposal avoided']]],
+[`data|server|cloud|hosting|compute`,`A data centre sells compute and throws away the heat: the cheapest district-heating source on the estate.`,[['gh','Greenhouse','Return water at 35 °C → root-zone heating','AED 260,000/yr · 380 t CO₂'],['laundry','Commercial laundry','Low-grade heat → pre-heat via heat pump','AED 140,000/yr in gas'],['dye','Dyehouse','Cooling load → tempered process water','AED 90,000/yr · water cut 18%']]],
+[`dye|textile|garment|fabric|laundry|wash`,`Dyehouses and laundries are water businesses that happen to sell cloth, so the loop is nearly always thermal plus water.`,[['cement','Cement plant','Textile sludge + lint → kiln input','AED 150,000/yr disposal avoided'],['bakery','Bakery','Rinse water at 45 °C → wash-down and tray cleaning','AED 75,000/yr · 6,000 m³ water'],['gh','Greenhouse','Condensate → irrigation make-up','AED 45,000/yr']]],
+[`plastic|polymer|packag|film|mould|mold`,`Offcuts and mould cooling are the two streams worth chasing: one is fuel, the other is free cooling.`,[['cement','Cement plant','Trim offcuts and rejects → kiln fuel','AED 210,000/yr · 300 t CO₂'],['laundry','Commercial laundry','Mould cooling water → pre-heat','AED 85,000/yr'],['gh','Greenhouse','Wash water recovery → irrigation','AED 30,000/yr']]],
+[`cement|concrete|block|quarry|kiln`,`A kiln is the estate’s furnace: it can burn what everyone else pays to bin, and it has heat to spare.`,[['gh','Greenhouse','Kiln CO₂ + waste heat → enrichment and heating','AED 310,000/yr · 420 t CO₂'],['dye','Dyehouse','Waste heat at 300 °C → steam for dye baths','AED 180,000/yr'],['plastics','Plastics','Fly ash → filler in recycled compounds','AED 55,000/yr']]],
+[`greenhouse|farm|agri|hydropon|nursery`,`A greenhouse buys everything the estate throws away: heat, CO₂ and clean water.`,[['dc','Data centre','Low-grade heat → root-zone heating','AED 260,000/yr · 380 t CO₂'],['bakery','Bakery','Fermentation CO₂ → glasshouse enrichment','AED 120,000/yr'],['cement','Cement plant','Treated flue CO₂ → enrichment','AED 95,000/yr']]],
+[`steel|metal|alumin|foundry|galvan`,`Metal plants have high-grade heat and heavy scrap: the highest-value loop on any estate.`,[['cement','Cement plant','Mill scale and swarf → kiln feed','AED 175,000/yr'],['laundry','Commercial laundry','Furnace exhaust → steam','AED 220,000/yr in gas'],['gh','Greenhouse','Waste heat → glasshouse heating','AED 130,000/yr']]]],
+GN=['',`No exact match in the library, so here are the loops that fit most estates: heat, clean water and burnable solids.`,[['laundry','Commercial laundry','Any low-grade heat → pre-heated wash water','AED 90,000/yr'],['cement','Cement plant','Dry combustible solids → kiln fuel','AED 60,000/yr disposal avoided'],['gh','Greenhouse','Clean water and CO₂ → glasshouse inputs','AED 45,000/yr']]],
+EX=[`A 40-person bakery in Al Quoz. Two rack ovens running 14 hours a day, exhaust at about 180 °C. About 60 kg of stale bread and flour dust a day.`,`A tier-3 data centre in Dubai Silicon Oasis, 4 MW of IT load, returning cooling water at 35 °C all year.`,`A textile dyehouse in Ajman running three shifts. Hot dye baths at 80 °C, rinse water going to drain, and about 8 tonnes of sludge a month.`];
+function fm(){const q=$('biz').value.trim().toLowerCase();if(q.length<3){$('mres').innerHTML=`<div class='c'><p>Tell me a little more: what do you throw away, and what do you buy?</p></div>`;return}
+let b=null,bs=0;LB.forEach(e=>{const s=e[0].split('|').filter(k=>q.includes(k)).length;if(s>bs){bs=s;b=e}});const e=b||GN,ps=e[2],tot=ps.reduce((a,p)=>a+(+((p[3].match(/AED ([\d,]+)/)||[0,'0'])[1].replace(/,/g,''))),0);
+$('mres').innerHTML=`<div class='c rs'><p>${e[1]}</p></div>`+ps.map((p,i)=>`<div class='c rs' style='animation-delay:${(i+1)*.15}s'><h3>${p[1]}</h3><p>${p[2]}</p><p style='margin-top:6px'><b>${p[3]}</b></p></div>`).join('')+`<div class='c rs' style='animation-delay:.6s;border-color:var(--acc2)'><p>Together: about <b>AED ${tot.toLocaleString('en-US')}</b> a year (illustrative). Open the Network slide to see them lit up.</p></div>`;
+if(!ST.mt){ST.mt=1;pt(10)}hot(ps.map(p=>p[0]))}
+function ex(k){$('biz').value=EX[k];fm()}
+FQ.unshift([`network|map|estate|matcher|match|neighbour`,`The Network slide shows seven plants on one estate. Flip between Today (everything is dumped) and With ZeroLoop (streams become supply contracts). The Matcher reads your plant description and proposes the three loops worth chasing first.`]);
+go(0);
+</script>
+</body>
+</html>
